@@ -1,0 +1,7 @@
+class Solution:
+    def percentageLetter(self, s: str, letter: str) -> int:
+        num1 = int(s.count(letter))
+        num2 = int(len(s))
+        result = (num1 / num2) * 100
+        result = round(result)
+        return result
