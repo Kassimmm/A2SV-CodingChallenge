@@ -1,0 +1,6 @@
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        new_s = set(s)
+        new_t = set(t)
+        result = new_t.difference(new_s)
+        return next(iter(result))
