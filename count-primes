@@ -1,0 +1,12 @@
+class Solution:
+    def countPrimes(self, num: int) -> int:
+        numprime = []
+        for n in range(2, num):
+            if n > 1:
+                for i in range(2, int(n/2)+1):
+                    if (n % i) == 0:
+                        break
+                else:
+                    numprime.append(n)
+
+        return len(numprime)
