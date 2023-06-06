@@ -1,0 +1,27 @@
+from collections import defaultdict
+
+n, m = map(int, input().split())
+
+A = []
+B = []
+
+positions = defaultdict(list)
+
+for _ in range(n):
+    word = input()
+    A.append(word)
+
+for _ in range(m):
+    word = input()
+    B.append(word)
+
+for i, word in enumerate(A, start=1):
+    positions[word].append(i)
+
+for word in B:
+    position = positions.get(word, [])
+    if position:
+        print(' '.join(map(str, position)))
+    else:
+        print("-1")
+
