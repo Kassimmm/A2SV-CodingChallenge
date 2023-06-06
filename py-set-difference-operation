@@ -1,0 +1,10 @@
+line1 = int(input())
+english = list(map(int, input().split()))
+english = set(english)
+
+line2 = int(input())
+french = list(map(int, input().split()))
+french = set(french)
+
+englishOnly = english.difference(french)
+print(len(englishOnly))
