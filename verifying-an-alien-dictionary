@@ -1,0 +1,18 @@
+class Solution:
+    def isAlienSorted(self, words: List[str], order: str) -> bool:
+        sorted = True
+
+        for i in range(len(words) - 1):
+            word1 = words[i]
+            word2 = words[i + 1]
+
+            for j in range(min(len(word1), len(word2))):
+                if word1[j] != word2[j]:
+                    if order.index(word1[j]) > order.index(word2[j]):
+                        sorted = False
+                    break
+
+            if len(word1) > len(word2) and word1[:len(word2)] == word2:
+                sorted = False
+
+        return sorted
