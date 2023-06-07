@@ -4,7 +4,7 @@ class Solution:
         char1 = list(string.ascii_lowercase)[:9]
         range1 =list(range(1, 10))
         char2 = list(string.ascii_lowercase)[9:]
-        range2 = list(range(11, 27))
+        range2 = list(range(10, 27))
         result = ""
 
         i = 0
