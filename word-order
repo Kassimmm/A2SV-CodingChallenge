@@ -1,0 +1,17 @@
+n = int(input())
+words = []
+distinct = ""
+
+for i in range(n):
+    word = input()
+    words.append(word)
+
+words_set = set(words)
+l1 = len(words_set)
+
+for j in words_set:
+    ans = words.count(j)
+    distinct += str(ans)
+
+print(l1)
+print(" ".join(distinct))
