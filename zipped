@@ -1,0 +1,13 @@
+n, m = map(int, input().split())
+lines = []
+
+for _ in range(m):
+    line = input()
+    line = list(map(float, line.split()))
+    lines.append(line)
+
+lines_zip = list(zip(*lines))
+results = [sum(elements)/m for elements in lines_zip]
+
+for i in results:
+    print(format(i, ".1f"))
