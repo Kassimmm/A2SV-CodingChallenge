@@ -1,0 +1,22 @@
+n = int(input())
+myItems = []
+result = []
+encountered = set()
+
+for _ in range(n):
+    item = input().split()
+    new_item = (" ".join(item[:-1]), int(item[-1]))  # Convert quantity to integer
+    myItems.append(new_item)
+
+for i in myItems:
+    if i not in encountered:
+        k = myItems.count(i)
+        if k > 1:
+            updated_item = (i[0], k * i[1])
+            result.append(updated_item)
+        else:
+            result.append(i)
+        encountered.add(i)
+
+for j in result:
+    print(j[0]  + " " + str(j[1]))
