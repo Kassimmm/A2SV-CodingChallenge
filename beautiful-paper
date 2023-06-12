@@ -1,0 +1,16 @@
+t = int(input())
+result = []
+
+for _ in range(t):
+    a1 = list(map(int, input().split()))
+    a2 = list(map(int, input().split()))
+    s1 = sorted(a1)
+    s2 = sorted(a2)
+
+    if (s1[0] + s2[0]) == s1[1]:
+        result.append("Yes")
+    else:
+        result.append("No")
+
+for i in result:
+    print(i)
