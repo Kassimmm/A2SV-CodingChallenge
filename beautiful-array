@@ -1,0 +1,27 @@
+n = int(input())
+arr = list(map(int, input().split()))
+
+pos = []
+neg = []
+zero = []
+
+for element in arr:
+    if element > 0:
+        pos.append(element)
+    elif element < 0:
+        neg.append(element)
+    else:
+        zero.append(element)
+    4
+if len(neg) % 2 == 0:
+    zero.append(neg.pop())
+
+if len(pos) == 0:
+    pos.append(neg.pop())
+    pos.append(neg.pop())
+
+print(len(neg), *neg)
+print(len(pos), *pos)
+print(len(zero), *zero)
+
+
