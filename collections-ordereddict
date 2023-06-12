@@ -5,7 +5,7 @@ encountered = set()
 
 for _ in range(n):
     item = input().split()
-    new_item = (" ".join(item[:-1]), int(item[-1]))  # Convert quantity to integer
+    new_item = (" ".join(item[:-1]), int(item[-1]))
     myItems.append(new_item)
 
 for i in myItems:
