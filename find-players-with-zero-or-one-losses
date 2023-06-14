@@ -1,0 +1,24 @@
+class Solution:
+    def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
+        updated_matches = []
+        answer1 = []
+        answer2 = []
+        results = []
+
+        for i in matches:
+            updated_matches.append(i[0])
+            updated_matches.append(i[1])
+
+        raw = set(updated_matches)
+        zipped_matches = list(zip(*matches))
+
+        print(zipped_matches)
+
+        for i in raw:
+            if i not in zipped_matches[1]:
+                answer1.append(i)
+            if zipped_matches[1].count(i) == 1:
+                answer2.append(i)
+        results.append(answer1)
+        results.append(answer2)
+        return results
