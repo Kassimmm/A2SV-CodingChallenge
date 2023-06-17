@@ -1,0 +1,46 @@
+t = int(input())
+result = []
+
+for _ in range(t):
+    n, m = map(int, input().split())
+
+    grid = []
+    for _ in range(n):
+        row = list(map(int, input().split()))
+        grid.append(row)
+
+    max_sum = 0
+    for i in range(n):
+        for j in range(m):
+            sum_diag = grid[i][j]
+            x, y = i + 1, j + 1
+            while x < n and y < m:
+                sum_diag += grid[x][y]
+                x += 1
+                y += 1
+
+            x, y = i - 1, j - 1
+            while x >= 0 and y >= 0:
+                sum_diag += grid[x][y]
+                x -= 1
+                y -= 1
+
+            x, y = i + 1, j - 1
+            while x < n and y >= 0:
+                sum_diag += grid[x][y]
+                x += 1
+                y -= 1
+
+            x, y = i - 1, j + 1
+            while x >= 0 and y < m:
+                sum_diag += grid[x][y]
+                x -= 1
+                y += 1
+
+            max_sum = max(max_sum, sum_diag)
+
+    result.append(max_sum)
+
+
+for i in result:
+    print(i)
