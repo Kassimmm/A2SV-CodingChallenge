@@ -1,0 +1,13 @@
+class Solution:
+    def minDeletionSize(self, strs: List[str]) -> int:
+        results = []
+        count = 0
+        for i in range(len(strs[0])):
+            for j in range(len(strs)):
+                results.append(strs[j][i])
+
+        for i in range(0, len(results), 3):
+            group = results[i:i+3]
+            if sorted(group) != group:
+                count += 1
+        return count
