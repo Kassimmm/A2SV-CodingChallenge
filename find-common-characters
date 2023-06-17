@@ -1,0 +1,19 @@
+from typing import List
+class Solution:
+    def commonChars(self, words: List[str]) -> List[str]:
+        min_count = {}
+        for char in words[0]:
+            min_count[char] = min_count.get(char, 0) + 1
+
+        for word in words[1:]:
+            count = {}
+            for char in word:
+                count[char] = count.get(char, 0) + 1
+            for char in min_count:
+                min_count[char] = min(min_count[char], count.get(char, 0))
+
+        common_chars = []
+        for char, count in min_count.items():
+            common_chars.extend([char] * count)
+
+        return common_chars
