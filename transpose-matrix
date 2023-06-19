@@ -1,0 +1,15 @@
+class Solution:
+    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+        result = []
+
+        if len(matrix) == len(matrix[0]):
+            for r in range(len(matrix)):
+                for c in range(len(matrix[0])):
+                    result.append(matrix[c][r])
+        else:
+            for r in range(len(matrix[0])):
+                for c in range(len(matrix)):
+                    result.append(matrix[c][r])
+
+        chunks = [result[i:i + len(matrix)] for i in range(0, len(result), len(matrix))]
+        return chunks
