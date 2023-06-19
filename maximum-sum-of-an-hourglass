@@ -1,0 +1,10 @@
+class Solution:
+    def maxSum(self, grid: List[List[int]]) -> int:
+        result = []
+
+        for r in range(1, len(grid)-1):
+            for c in range(1, len(grid[0])-1):
+                hourglass = grid[r-1][c-1] + grid[r-1][c] + grid[r-1][c+1] + grid[r][c] + grid[r+1][c-1] + grid[r+1][c] + grid[r+1][c+1] 
+                result.append(hourglass)
+                
+        return int(max(result))
