@@ -1,0 +1,18 @@
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        rc = []
+        for r in range(len(matrix)):
+            for c in range(len(matrix[0])):
+                if matrix[r][c] == 0:
+                    rc.append(r)
+                    rc.append(c)
+
+        chunks = [rc[i:i + 2] for i in range(0, len(rc), 2)]  
+
+        for k in range(len(chunks)):
+            for j in range(len(matrix[0])):
+                matrix[chunks[k][0]][j] = 0
+            for i in range(len(matrix)):
+                matrix[i][chunks[k][1]] = 0
+
+        return matrix
