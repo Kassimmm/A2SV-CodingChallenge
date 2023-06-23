@@ -1,0 +1,14 @@
+class Solution:
+    def matrixReshape(self, mat: List[List[int]], r: int, c: int) -> List[List[int]]:
+        output = []
+
+        for row in range(len(mat)):
+            for col in range(len(mat[0])):
+                output.append(mat[row][col]) 
+
+        chunks = [output[i:i + c] for i in range(0, len(output), c)] 
+
+        if len(chunks) == r:
+            return chunks
+        else:
+            return mat
