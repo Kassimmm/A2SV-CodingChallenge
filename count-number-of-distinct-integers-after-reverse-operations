@@ -1,0 +1,10 @@
+class Solution:
+    def countDistinctIntegers(self, nums: List[int]) -> int:
+        output = []
+
+        for i in nums:
+            i = str(i)[-1::-1]
+            output.append(int(i))
+
+        nums.extend(output)
+        return (len(set(nums)))
