@@ -1,0 +1,17 @@
+t = int(input())
+output = []
+ 
+for _ in range(t):
+    n, k = map(int, input().split())
+ 
+    if n % 2 == 0:
+        if k % 2 == 0 or k % 2 == 1:
+            output.append("YES")
+    else:
+        if k % 2 == 0:
+            output.append("NO")
+        else:
+            output.append("YES")
+ 
+for result in output:
+    print(result)
