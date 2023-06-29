@@ -1,0 +1,22 @@
+class Solution:
+    def validMountainArray(self, arr: List[int]) -> bool:
+        state = True
+        mid = arr.index(max(arr))
+
+        half1 = arr[:mid] 
+        half2 = arr[mid:]
+
+        if len(arr) >= 3:
+            for i in range(len(half1)-1):
+                if mid == 0 or half1[i] <= half1[i+1]:
+                    state = False
+                    break
+
+            for j in range(len(half2)-1):
+                if mid == 0 or half2[j] <= half2[j+1]:
+                    state = False
+                    break
+        else:
+            state = False
+
+        return state
