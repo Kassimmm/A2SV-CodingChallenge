@@ -1,0 +1,7 @@
+n = input()
+counter = len(set(n))
+ 
+if counter % 2 == 0:
+    print("CHAT WITH HER!")
+else:
+    print("IGNORE HIM!")
