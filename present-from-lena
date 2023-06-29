@@ -1,0 +1,22 @@
+n = int(input())
+output = []
+ans = []
+ 
+if n <= 2 or n <= 9:
+    for i in range(n+1):
+        line = list(range(i+1))
+        half = line[:-1]
+        half = sorted(half, reverse=True)
+        output.append(line + half)
+ 
+ 
+    for i in output:
+        calc = ((2 * n) + 1- len(i))
+        space = " " * int(calc)
+        result = space + str(i) 
+        result = result.replace("[", "")
+        result = result.replace("]", "")
+        result = result.replace(",", "")
+        ans.append(result)
+ 
+print('\n'.join(ans + ans[-2::-1]))
