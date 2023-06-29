@@ -1,0 +1,14 @@
+n = int(input())
+sequence = list(map(int, input().split()))
+ 
+total_sum = sum(sequence)
+ 
+indices = []
+for i, num in enumerate(sequence):
+    if num * (n - 1) == total_sum - num:
+        indices.append(i + 1)
+ 
+print(len(indices))
+ 
+if len(indices) > 0:
+    print(' '.join(map(str, indices)))
