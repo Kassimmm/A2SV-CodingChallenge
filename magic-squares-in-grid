@@ -1,0 +1,36 @@
+class Solution:
+    def numMagicSquaresInside(self, grid: List[List[int]]) -> int:
+        count = 0
+
+        for i in range(len(grid[0]) - 2):
+            subgrid = [row[i:i+3] for row in grid]
+            cols = []
+            rows = []
+            diagonal = []
+            distinct = []
+
+            for item in subgrid:
+                for element in item:
+                    if element >= 1 and element <= 9:
+                        distinct.append(element)
+
+            for r in range(3):
+                for c in range(3):
+                    rows.append(subgrid[r][c])
+
+            for c in range(3):
+                for r in range(3):
+                    cols.append(subgrid[r][c])
+
+            for r in range(3):
+                for c in range(3):
+                    if r == c:
+                        diagonal.append(subgrid[r][c])
+
+            chunkr = [rows[i:i + 3] for i in range(0, len(rows), 3)]
+            chunkc = [cols[i:i + 3] for i in range(0, len(cols), 3)]
+
+            if sum(diagonal) == sum(chunkc[0]) == sum(chunkc[1]) == sum(chunkc[2]) == sum(chunkr[0]) == sum(chunkr[1]) == sum(chunkr[2]) and len(set(distinct)) == len(distinct):
+                count += 1
+
+        return (count)
