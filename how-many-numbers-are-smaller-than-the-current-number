@@ -1,0 +1,11 @@
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        output = []
+        nums_sort = sorted(nums)
+
+        for i in(nums):
+            target = nums_sort.index(i)
+            result = nums_sort[:target]
+            output.append(len(result))
+
+        return (output)
