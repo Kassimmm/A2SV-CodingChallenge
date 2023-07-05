@@ -1,0 +1,23 @@
+t = int(input())
+
+for _ in range(t):
+    n, k = map(int, input().split())
+    arr = list(map(int, input().split()))
+    pre_swaps = 0
+    selfswapable = [set() for _ in range(k)]
+
+    for idx, value in enumerate(arr):
+        selfswapable[idx % k].add(value)
+
+    for idx in range(n):
+        value = idx + 1
+
+        if value not in selfswapable[idx % k]:
+            pre_swaps += 1
+
+    if pre_swaps == 0:
+        print(0)
+    elif pre_swaps == 2:
+        print(1)
+    else:
+        print(-1)
