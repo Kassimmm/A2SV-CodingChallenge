@@ -1,0 +1,70 @@
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        first_col = []
+        mid_col = []
+        last_col = []
+        output = True
+
+
+        for item in board:
+            first_col.extend(item[:3])
+            mid_col.extend(item[3:6])
+            last_col.extend(item[6:9])
+
+
+
+        first_col = [first_col[i:i +9] for i in range(0, len(first_col), 9)]
+        mid_col = [mid_col[i:i +9] for i in range(0, len(mid_col), 9)]
+        last_col = [last_col[i:i +9] for i in range(0, len(last_col), 9)]
+
+        final_arr = []
+        final_arr.extend(first_col)
+        final_arr.extend(mid_col)
+        final_arr.extend(last_col)
+
+        col_check = []
+        for col_idx in range(len(board[0])):
+            for row_idx in range(len(board)):
+                col_check.append(board[row_idx][col_idx])
+
+
+        col_check = [col_check[i:i +9] for i in range(0, len(col_check), 9)]
+
+        def check_validity(arr):
+            digits = set()
+
+            for element in arr:
+                if element != ".":
+                    if not element.isdigit():
+                        return False 
+                    digit = int(element)
+                    if digit < 1 or digit > 9:
+                        return False
+                    if digit in digits:
+                        return False 
+                    digits.add(digit)
+
+            return True
+
+
+        for i in final_arr:
+            valid = check_validity(i)
+            if not valid:
+                output = False
+                break
+
+        for j in board:
+            valid = check_validity(j)
+            if not valid:
+                output = False
+                break
+
+        for k in col_check:
+            valid = check_validity(k)
+            if not valid:
+                output = False
+                break
+
+        return (output)
+        
+        
