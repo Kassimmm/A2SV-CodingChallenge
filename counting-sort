@@ -1,0 +1,16 @@
+def countingSort(arr,n):
+    count = [0] * (n)
+    for num in arr:
+        count[num] += 1
+
+    sorted_arr = []
+    for value in count:
+        sorted_arr.append(value)
+
+    return sorted_arr
+
+n = int(input().strip())
+arr = list(map(int, input().rstrip().split()))
+
+result = countingSort(arr,n)
+print(' '.join(map(str, result)))
