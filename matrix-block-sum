@@ -1,0 +1,22 @@
+class Solution:
+    def matrixBlockSum(self, mat: List[List[int]], k: int) -> List[List[int]]:
+        def func(mat, r, c, k):
+            answer = 0
+            starti = max(0, r - k)
+            startj = max(0, c - k)
+            endi = min(len(mat), r + k + 1)
+            endj = min(len(mat[0]), c + k + 1)
+            
+            for i in range(starti, endi):
+                for j in range(startj, endj):
+                    answer += mat[i][j]
+            
+            return answer
+
+        answer = [[0] * len(mat[0]) for _ in range(len(mat))]
+
+        for r in range(len(mat)):
+            for c in range(len(mat[0])):
+                answer[r][c] = func(mat, r, c, k)
+
+        return (answer)
