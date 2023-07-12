@@ -1,0 +1,9 @@
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    arr = list(map(int, input().split()))
+    mini = arr.index(min(arr))
+    maxi = arr.index(max(arr))
+    
+    print(mini+1, maxi+1)
