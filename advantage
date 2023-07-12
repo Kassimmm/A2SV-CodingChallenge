@@ -1,0 +1,16 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    arr = list(map(int, input().split()))
+    newArr = sorted(arr)
+    output = []
+
+    for i in range(n):
+        if arr[i] == newArr[-1]:
+            diff = arr[i] - newArr[-2]
+            output.append(diff)
+        else:
+            diff = arr[i] - newArr[-1]
+            output.append(diff)
+
+    print(" ".join(map(str, output)))
