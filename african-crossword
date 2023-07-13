@@ -1,0 +1,24 @@
+n,m = map(int, input().split())
+grid = []
+for _ in range(n):
+    row = list(input())
+    grid.append(row)
+
+result = ""
+
+for i in range(n):
+    for j in range(m):
+        ans = 0
+
+        for k in range(m):
+            if grid[i][j] == grid[i][k]:
+                ans += 1
+        
+        for l in range(n):
+            if grid[i][j] == grid[l][j]:
+                ans += 1
+        if ans == 2:
+            result +=  grid[i][j]
+
+
+print(result)
