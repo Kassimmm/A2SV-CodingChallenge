@@ -1,0 +1,18 @@
+t= int(input())
+ 
+for _in in range(t):
+    n, c = map(int, input().split())
+    arr = list(map(int, input().split()))
+    result = 0
+    dictionry = {}
+ 
+    for i in range(n):
+        if arr[i] not in dictionry:
+            dictionry[arr[i]] = 1
+        else:
+            dictionry[arr[i]] += 1
+            
+        if dictionry[arr[i]] <= c:
+            result += 1
+ 
+    print(result)
