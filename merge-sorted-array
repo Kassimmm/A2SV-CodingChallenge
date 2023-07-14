@@ -18,3 +18,29 @@ class Solution:
             nums1[k] = nums2[j]
             j -= 1
             k -= 1
+
+
+"""second approach"""
+
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+
+        merged = []
+        first, second = 0, 0
+
+        while first < m and second < n:
+            if nums1[first] < nums2[second]:
+                merged.append(nums1[first])
+                first += 1
+            else:
+                merged.append(nums2[second])
+                second += 1
+
+        merged += nums1[first:m]
+        merged += nums2[second:n]
+
+        nums1[:] = merged
+
+        
+
+            
