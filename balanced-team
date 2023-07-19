@@ -1,0 +1,16 @@
+n = int(input())
+skills = list(map(int, input().split()))
+ 
+skills.sort()
+ 
+maximum = 0
+left = 0
+right = 0
+ 
+while right < n:
+    while skills[right] - skills[left] > 5:
+        left += 1
+    maximum = max(maximum, right - left + 1)
+    right += 1
+ 
+print(maximum)
