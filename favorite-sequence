@@ -1,0 +1,19 @@
+t = int(input())
+ 
+for _ in range(t):
+    n = int(input())
+    b = list(map(int, input().split()))
+ 
+    ans = []
+    f, l = 0, n-1
+ 
+    while f < l:
+        ans.append(b[f])
+        ans.append(b[l])
+        f += 1
+        l -= 1
+ 
+    if f == l: 
+        ans.append(b[f])
+ 
+    print(' '.join(map(str, ans)))
