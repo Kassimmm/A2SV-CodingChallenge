@@ -1,0 +1,22 @@
+class Solution:
+    def numberOfSubarrays(self, nums: List[int], k: int) -> int:
+        odds = [idx for idx in range(len(nums)) if nums[idx] % 2]
+        prev_odd = -1
+
+        left = total = left_even = right_even = 0
+
+        for right in range(len(odds)):
+            if left - 1 >= 0:
+                prev_odd = odds[left-1]
+            left_even = odds[left] - prev_odd
+            if right == len(odds)-1:
+                right_even = len(nums) - odds[right]
+            else:
+                right_even = odds[right+1] - odds[right]
+                
+            
+            if right - left == k-1:
+                total += left_even * right_even
+                left += 1
+            
+        return total
