@@ -1,15 +1,16 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        hashmap = {0: 1}
-        count = 0
-        cur_sum = 0
+        presum = count = 0
+        hashmap = defaultdict(int)
+        hashmap[0] = 1
 
-        for i in range(len(nums)):
-            cur_sum += nums[i]
+        for r in range(len(nums)):
+            presum += nums[r]
+            count += hashmap[presum - k]
 
-            diff = cur_sum - k
-            count += hashmap.get(diff, 0)
-
-            hashmap[cur_sum] = 1 + hashmap.get(cur_sum, 0)
-
+            hashmap[presum] += 1
         return count
+
+
+
+
