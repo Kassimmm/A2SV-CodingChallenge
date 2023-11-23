@@ -1,7 +1,8 @@
 # --------------------------------------
 # Function to convert Adjacency List to Adjacency Matrix
 def adjacency_list_to_matrix(adj_list):
-    adj_matrix = [[0, 0, 0, 0] for i in range(len(adj_list))]
+    n = len(adj_list)
+    adj_matrix = [[0]* n for _ in range(n)]
     for v in adj_list:
         for dst in adj_list[v]:
             adj_matrix[v][dst] = 1
