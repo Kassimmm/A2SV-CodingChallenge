@@ -1,20 +1,21 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        memo = {}
+        dp = [[0 for _ in range(n)] for _ in range(m)] 
 
-        grid = [[0]* n for _ in range(m)]
+
+        def base(i,j):
+            if 0 <= i < m and 0 <= j < n:
+                return dp[i][j]
+
+            return 0
         
-        def dp(i,j):
-            if i == m-1  and j == n-1:
-                return 1
-            if i == m  or j == n:
-                return 0
-            if (i,j) not in memo:
-                a = dp(i+1, j)
-                b = dp(i, j+1)
-                memo[(i,j)] = a + b
+        dp[m-1][n-1] = 1
 
-            return memo[(i,j)]
-            
-        return dp(0,0)
+        for i in range(m-1, -1, -1):
+            for j in range(n-1, -1,-1): 
+                dp[i][j] += base(i+1, j) + base(i, j+1)
+
+        return dp[0][0]
+
+
         
