@@ -1,36 +1,16 @@
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
-        graph = defaultdict(list)
+        graph = [[float("inf")] * (n) for _ in range(n)]
+
         for src, dest, cost in times:
-            graph[src].append((dest, cost))
+            graph[src-1][dest-1] = cost
 
-        def dp(source, destination):
-            visited = set()
-            heap = [(0,source)]
-            heapify(heap)
+        for i in range(n):
+            graph[i][i] = 0
 
-            while heap:
-                cost, node = heappop(heap)
+        for a in range(n):
+            for i in range(n):
+                for j in range(n):
+                    graph[i][j] = min(graph[i][j], graph[i][a]+graph[a][j])
 
-                if node == destination:
-                    return cost
-
-                visited.add(node)
-
-                for child in graph[node]:
-                    if child[0] not in visited:
-                        heappush(heap, (cost+child[1], child[0]))
-
-            return -1
-
-  
-        res = []
-        for i in range(1, n+1): 
-            res.append(dp(k, i))
-
-        if -1 in res:
-            return (-1)
-        else:
-            return (max(res))
-
-        
+        return max(graph[k-1]) if max(graph[k-1]) != float("inf") else -1
