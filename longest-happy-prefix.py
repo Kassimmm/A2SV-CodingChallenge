@@ -1,3 +1,5 @@
+#using robin carp
+
 class Solution:
     def longestPrefix(self, s: str) -> str:
         base = 31
@@ -22,4 +24,26 @@ class Solution:
         if hash1 == hash2: res = s[:m-1]
 
         return res
+
+#using kmp (knuth-moris-pratt)
+
+class Solution:
+    def longestPrefix(self, s: str) -> str:
+        n = len(s)
+        lps = [0] * n
+        count = 0
+
+        for i in range(1, n):
+            j = lps[i-1]
+            
+            while j > 0 and s[i] != s[j]:
+                j = lps[j-1]
+            
+            if s[i] == s[j]:
+                j += 1
+                
+            lps[i] = j
+
+        return s[:lps[-1]]
+        
         
